@@ -1,13 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entidades;
 
-/**
- *
- * @author laboratorio
- */
+import java.time.LocalDateTime;
+
 public class Registro {
-    
+    private Vehiculo vehiculo;
+    private LocalDateTime horaEntrada;
+    private LocalDateTime horaSalida;
+
+    public Registro(Vehiculo vehiculo, LocalDateTime horaEntrada) {
+        this.vehiculo = vehiculo;
+        this.horaEntrada = horaEntrada;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public LocalDateTime getHoraEntrada() {
+        return horaEntrada;
+    }
+
+    public LocalDateTime getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(LocalDateTime horaSalida) {
+        this.horaSalida = horaSalida;
+    }
 }
