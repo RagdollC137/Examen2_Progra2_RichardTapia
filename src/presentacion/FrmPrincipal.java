@@ -49,7 +49,6 @@ public class FrmPrincipal extends JFrame {
 
         add(panelCentro, BorderLayout.CENTER);
 
-        // EVENTOS
         btnIngreso.addActionListener(e -> new FrmIngreso().setVisible(true));
         btnSalida.addActionListener(e -> new FrmSalida().setVisible(true));
 
@@ -63,56 +62,59 @@ public class FrmPrincipal extends JFrame {
             cargarHistorial();
         });
 
-        // CARGA INICIAL
         cargarActivos();
         cargarHistorial();
     }
 
     private void cargarActivos() {
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Placa");
-        modelo.addColumn("Tipo");
-        modelo.addColumn("Hora Entrada");
+    javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+    modelo.addColumn("Placa");
+    modelo.addColumn("Tipo");
+    modelo.addColumn("Hora Entrada");
 
-        List<Registro> lista = service.obtenerActivos();
+    java.util.List<entidades.Registro> lista = service.obtenerActivos();
 
-        for (Registro r : lista) {
-            modelo.addRow(new Object[]{
-                    r.getVehiculo().getPlaca(),
-                    r.getVehiculo().getTipo(),
-                    r.getHoraEntrada()
-            });
-        }
-
-        tablaActivos.setModel(modelo);
+    for (entidades.Registro r : lista) {
+        modelo.addRow(new Object[]{
+            r.getVehiculo().getPlaca(),
+            r.getVehiculo().getTipo(),
+            r.getHoraEntrada()
+        });
     }
 
-    private void cargarHistorial() {
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Placa");
-        modelo.addColumn("Tipo");
-        modelo.addColumn("Entrada");
-        modelo.addColumn("Salida");
-        modelo.addColumn("Monto");
+    tablaActivos.setModel(modelo);
+}
 
-        List<String> lista = service.obtenerHistorial();
+   private void cargarHistorial() {
+    javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+    modelo.addColumn("Placa");
+    modelo.addColumn("Tipo");
+    modelo.addColumn("Entrada");
+    modelo.addColumn("Salida");
+    modelo.addColumn("Monto");
 
-        for (String linea : lista) {
-            String[] datos = linea.split(",");
+    java.util.List<String> lista = service.obtenerHistorial();
 
+    for (String linea : lista) {
+        String[] datos = linea.split(",");
+
+        if (datos.length == 5) {
             modelo.addRow(new Object[]{
-                    datos[0],
-                    datos[1],
-                    datos[2],
-                    datos[3],
-                    datos[4]
+                datos[0],
+                datos[1],
+                datos[2],
+                datos[3],
+                datos[4]
             });
         }
-
-        tablaHistorial.setModel(modelo);
     }
 
-    public static void main(String[] args) {
+    tablaHistorial.setModel(modelo);
+}
+
+   public static void main(String[] args) {
+    java.awt.EventQueue.invokeLater(() -> {
         new FrmPrincipal().setVisible(true);
-    }
+    });
+}
 }

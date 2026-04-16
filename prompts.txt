@@ -1,1 +1,30 @@
+El primer prompt utilizado fue 
+MAe quiero que me ayude a desarrollar una aplicación en Java con interfaz gráfica para la gestión de un 
+parqueo público, aplicando arquitectura por capas, persistencia en archivos, versionamiento, quiero que sea en lenguaje
+ Java, en NetBeans, Build con Apache Ant, Interfaz: Swing (JFrame, JTable, formularios)
+ Restricciones: No uso de Consola (System.out), No JOptionPane. El sistema que queremos
+ desarrollar es un sistema de parqueo basico para administrar un parqueo donde se registran vehiculos,
+ su entrada, salida y calculo de cobro. Funcionalidades minimas que debe tener el programa:
+ 1.Registro de ingreso Placa del Vehiculo, TIpo de vehiculo(Carro, Moto), Hora de Entrada (automática) 2.Registro de 
+Salida Selección del Vehiculo, Hora de salida(automática),Cálculo del monto a pagar(700 por hora) 3.
+Visualización: Tabla de vehiculos actualmente en el parque, Tabla con Historial de vehiculos. 4.Eliminación
+ Eliminar los registros historicos Reglas de negocio mínimas Control de unicidad de ingreso No se permitirá el registro
+ de ingreso de un vehículo cuya placa ya se encuentre activa dentro del parqueo (sin registro de salida
+ Cálculo de cobro por tiempo El monto a pagar deberá calcularse en función de la
+ diferencia entre la hora de entrada y la hora de salida, aplicando la tarifa definida por hora o fracción. Validación de datos obligatorios
+ Todos los campos requeridos (placa, tipo de vehículo, etc.) deben ser validados antes de procesar cualquier operación.
+ No se deben permitir valores nulos, vacíos o inconsistentes. Tiene que tener una arquitectura de codigo obligatoria (Las Capas). 
+Presentación → Interfaces gráficas Lógica de Negocio → Validaciones y cálculo de cobro Acceso a Datos → Archivos .txt Entidades → Clases (Vehiculo, Registro, etc.) 
+Reglas de arquitectura (obligatorias) Restricción de dependencias en capas 
+La capa de Presentación únicamente puede interactuar con: Capa de Lógica de Negocio Entidades No está permitido
+ el acceso directo desde Presentación hacia Acceso a Datos. Aislamiento de Acceso a Datos La capa de 
+Acceso a Datos: No debe tener conocimiento de la capa de Presentación No debe interactuar con interfaces
+ gráficas Flujo correcto de la arquitectura Presentación→Lógica de Negocio→Acceso a Datos ↓ Entidades
+ Encapsulamiento de la lógica Toda validación, reglas de negocio y cálculos deben
+ implementarse en la capa de Lógica de Negocio, no en la interfaz. La Estructura esperada tiene que ser
+ la siguiente wn /src /entidades /logica /accesodatos /presentacion /prompts.txt /CHANGELOG.md /README.md
 
+LA IA generó Los paquete principales y explicó como acomodar todo, lo unico que no generó fue la clase principal
+la cuál me dijo que debía hacerla con dos clases aparte que eran la "FrmSalida y FrmIngreso"
+Mientras se iba agregando todo se fueron haciendo cambios en lo que se le pidió a la IA ya que no estaba dando
+el resultado esperado.
